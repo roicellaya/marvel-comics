@@ -42,5 +42,8 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "marvelComics: An Ionic project"
+  "description": "marvelComics: An Ionic project",
+  "engines": {
+    "node": "6.10.2"
+  },
 }
