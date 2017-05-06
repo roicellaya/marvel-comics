@@ -15,7 +15,7 @@ export class MarvelComicService {
 
   constructor(public http: Http) {
     console.log('Hello MarvelComicService Provider');
-    this.limit = 20;
+    this.limit = 30;
   }
 
   getComics(pageNum) {
@@ -41,9 +41,4 @@ export class MarvelComicService {
 	      });
 	  });
 	}
-
-	getOne(id) {
-
-	}
-
 }

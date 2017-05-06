@@ -55681,6 +55681,7 @@ var HomePage = (function () {
                 _this.marvelComics.push(data[i]);
             }
             console.log(_this.marvelComics);
+            infiniteScroll.complete();
         });
     };
     return HomePage;
@@ -76732,7 +76733,7 @@ var MarvelComicService = (function () {
     function MarvelComicService(http) {
         this.http = http;
         console.log('Hello MarvelComicService Provider');
-        this.limit = 20;
+        this.limit = 30;
     }
     MarvelComicService.prototype.getComics = function (pageNum) {
         var _this = this;
@@ -76756,8 +76757,6 @@ var MarvelComicService = (function () {
                 resolve(_this.data);
             });
         });
-    };
-    MarvelComicService.prototype.getOne = function (id) {
     };
     return MarvelComicService;
 }());

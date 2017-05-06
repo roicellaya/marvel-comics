@@ -43,7 +43,7 @@ export class HomePage {
           this.marvelComics.push(data[i]);
         }
         console.log(this.marvelComics);
+        infiniteScroll.complete();
       });
   }
-
 }
