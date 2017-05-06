@@ -29,7 +29,10 @@ export class HomePage {
   }
 
   getDetails(marvelComic) {
-    this.navCtrl.push(ComicDetailsPage);
+    console.log('marvel comic:', marvelComic);
+    this.navCtrl.push(ComicDetailsPage, {
+      marvelComic: marvelComic
+    });
   }
 
   getMoreComics(infiniteScroll) {

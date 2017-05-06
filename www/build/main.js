@@ -55679,7 +55679,10 @@ var HomePage = (function () {
         });
     };
     HomePage.prototype.getDetails = function (marvelComic) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__comic_details_comic_details__["a" /* ComicDetailsPage */]);
+        console.log('marvel comic:', marvelComic);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__comic_details_comic_details__["a" /* ComicDetailsPage */], {
+            marvelComic: marvelComic
+        });
     };
     HomePage.prototype.getMoreComics = function (infiniteScroll) {
         var _this = this;
