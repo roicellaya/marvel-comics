@@ -12,7 +12,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'comic-details.html'
 })
 export class ComicDetailsPage {
-  public comic: any;
+  public comic: any;			// Almacena el objeto comic pasado en navParams
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.comic = navParams.get('marvelComic');

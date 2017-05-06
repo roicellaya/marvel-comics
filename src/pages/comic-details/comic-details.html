@@ -13,6 +13,10 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>Portada: </h1>
+  <img src="{{ comic.thumbnail.path }}.{{ comic.thumbnail.extension }}">
+
+  <h1>Imágenes: </h1>
   <ion-grid>
     <ion-row>
       <ion-col col-4 *ngFor="let image of comic.images">

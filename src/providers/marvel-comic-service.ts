@@ -10,10 +10,9 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class MarvelComicService {
-	data;
-	comicData;
+	data;					// Almacena los comics devuelto por el api de marvel
 
-	limit: number;
+	limit: number;			// Número de comics por consulta
 
   constructor(public http: Http) {
     this.limit = 30;
@@ -21,22 +20,16 @@ export class MarvelComicService {
 
   getComics(pageNum) {
 	  if (this.data) {
-	    // already loaded data
 	    return Promise.resolve(this.data);
 	  }
 
-	  // don't have the data yet
+    // Se obtiene la data y se retorna la promesa
 	  return new Promise(resolve => {
-	    // We're using Angular HTTP provider to request the data,
-	    // then on the response, it'll map the JSON data to a parsed JS object.
-	    // Next, we process the data and resolve the promise with the new data.
-	    var query_string = 'apikey=eec2b791e6e4abce698cc51c828fcd0a&limit=';
+	    var query_string = 'apikey=3dec7cc6602ded8d2beefdc9aeb3f995&limit=';
 	    query_string += this.limit + '&offset=' + (pageNum * this.limit) + '&hasDigitalIssue=true';
 	    this.http.get('https://gateway.marvel.com/v1/public/comics?' + query_string)
 	      .map(res => res.json())
 	      .subscribe(data => {
-	        // we've got back the raw data, now generate the core schedule data
-	        // and save the data for later reference
 	        this.data = data.data.results;
 	        resolve(this.data);
 	      });

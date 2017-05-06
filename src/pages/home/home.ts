@@ -10,8 +10,8 @@ import { ComicDetailsPage } from '../comic-details/comic-details';
   providers: [MarvelComicService]
 })
 export class HomePage {
-	public marvelComics: any;
-  public pageNum: number;
+	public marvelComics: any;    // Arreglo de comics retornados por el api de marvel
+  public pageNum: number;      // número de página (offset) a consultar del servicio de marvel
 
   constructor(public navCtrl: NavController, public marvelComicService: MarvelComicService) {
   	this.pageNum = 0;
@@ -19,6 +19,7 @@ export class HomePage {
     this.getMarvelComics();
   }
 
+  // Obtiene los comics mostrados inicialmente
   getMarvelComics() {
   	this.marvelComicService.getComics(this.pageNum)
   		.then(data => {
@@ -28,6 +29,7 @@ export class HomePage {
   		});
   }
 
+  // Carga la página de detalles de un comic
   getDetails(marvelComic) {
     console.log('marvel comic:', marvelComic);
     this.navCtrl.push(ComicDetailsPage, {
@@ -35,6 +37,7 @@ export class HomePage {
     });
   }
 
+  // Obtiene más comics cuando se activa el evento infiniteScroll
   getMoreComics(infiniteScroll) {
     this.pageNum += 1;
     this.marvelComicService.getComics(this.pageNum)
@@ -46,6 +49,7 @@ export class HomePage {
       });
   }
 
+  // Filtra los comics de la página en base al valor del searchbar
   filterComics(ev: any) {
     let val = ev.target.value;
 
@@ -60,6 +64,7 @@ export class HomePage {
     }
   }
 
+  // Limpia la barra de búsqueda
   onCancel(ev) { 
     ev.target.value = '';
   }
