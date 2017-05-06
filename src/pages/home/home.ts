@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {MarvelComicService} from '../../providers/marvel-comic-service';
 
+import { ComicDetailsPage } from '../comic-details/comic-details';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -24,6 +26,7 @@ export class HomePage {
 
   getDetails(marvelComic) {
   	console.log(marvelComic);
+    this.navCtrl.push(ComicDetailsPage);
   }
 
 }

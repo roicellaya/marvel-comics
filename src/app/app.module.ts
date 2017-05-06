@@ -7,11 +7,13 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ComicDetailsPage } from '../pages/comic-details/comic-details';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    ComicDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -21,7 +23,8 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ComicDetailsPage
   ],
   providers: [
     StatusBar,
