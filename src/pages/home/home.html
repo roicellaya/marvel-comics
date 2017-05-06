@@ -15,7 +15,7 @@
       <h2>Título: {{ marvelComic.title }}</h2>
       <p>Fecha: {{ marvelComic.dates[0].date | date }}</p>
       <p>Descripción: {{ marvelComic.description }}</p>
-      <button ion-button item-left (click)="getDetails(marvelComic)">Detalles</button>
+      <button ion-button clear item-left (click)="getDetails(marvelComic)">Detalles</button>
     </ion-item>
   </ion-list>
 </ion-content>
