@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {MarvelComicService} from '../../providers/marvel-comic-service';
 
 /**
  * Generated class for the ComicDetails page.
@@ -12,8 +13,16 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'comic-details.html',
 })
 export class ComicDetailsPage {
+  public comic: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public marvelComicService: MarvelComicService) {
+    var marvelComic = navParams.get('marvelComic');
+    this.marvelComicService.getComic(marvelComic.id)
+      .then(data => {
+        this.comic = data;
+        console.log(this.comic);
+      });
   }
 
 }

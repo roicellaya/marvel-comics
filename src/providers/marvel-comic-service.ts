@@ -11,6 +11,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MarvelComicService {
 	data;
+	comicData;
+
 	limit: number;
 
   constructor(public http: Http) {
@@ -40,5 +42,21 @@ export class MarvelComicService {
 	        resolve(this.data);
 	      });
 	  });
+	}
+
+	getComic(id) {
+		if (this.comicData) {
+	    // already loaded data
+	    return Promise.resolve(this.comicData);
+	  }
+
+    return new Promise(resolve => {
+      var query_string = id + '&apikey=eec2b791e6e4abce698cc51c828fcd0a';
+      this.http.get('https://gateway.marvel.com/v1/public/comics/' + query_string)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.comicData = data.data.results[0];
+        });
+    });
 	}
 }
