@@ -55630,9 +55630,10 @@ HomePage = __decorate([
         selector: 'page-home',template:/*ion-inline-start:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Marvel Comics\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let marvelComic of marvelComics">\n      <ion-thumbnail item-left>\n        <img src="{{marvelComic.avatar_url}}">\n      </ion-thumbnail>\n      <h2>{{marvelComic.login}}</h2>\n      <p>{{marvelComic.type}}</p>\n      <button ion-button clear item-right (click)="getDetails(marvelComic)">Detalles</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/home/home.html"*/,
         providers: [__WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]) === "function" && _b || Object])
 ], HomePage);
 
+var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -76679,7 +76680,7 @@ var MarvelComicService = (function () {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://api.github.com/users')
+            _this.http.get('http://gateway.marvel.com/v1/public/comics?limit=10&apikey=e89a3ff9aba5d84a2ebe8d79c8458948')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
@@ -76695,9 +76696,10 @@ var MarvelComicService = (function () {
 }());
 MarvelComicService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], MarvelComicService);
 
+var _a;
 //# sourceMappingURL=marvel-comic-service.js.map
 
 /***/ }),
