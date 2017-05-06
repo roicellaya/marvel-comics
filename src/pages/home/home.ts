@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {MarvelComicService} from '../../providers/marvel-comic-service';
-import {MarvelComicDetails} from '../marvel-comic-details';
 
 @Component({
   selector: 'page-home',
@@ -25,7 +24,6 @@ export class HomePage {
 
   getDetails(marvelComic) {
   	console.log(marvelComic);
-  	this.navCtrl.push(MarvelComicDetails);
   }
 
 }
