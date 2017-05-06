@@ -14,20 +14,8 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row *ngFor="let image of comic.images; let i = index" *ngIf="i % 4 === 0">
-      <ion-col col-4 *ngIf="i < images.length">
-        <img src="{{ image.path }}.{{ image.extension }}">
-      </ion-col>
-
-      <ion-col col-4 *ngIf="i+1 < images.length">
-        <img src="{{ image.path }}.{{ image.extension }}">
-      </ion-col>
-
-      <ion-col col-4 *ngIf="i+2 < images.length">
-        <img src="{{ image.path }}.{{ image.extension }}">
-      </ion-col>
-
-      <ion-col col-4 *ngIf="i+3 < images.length">
+    <ion-row>
+      <ion-col col-4 *ngFor="let image of comic.images">
         <img src="{{ image.path }}.{{ image.extension }}">
       </ion-col>
     </ion-row>
