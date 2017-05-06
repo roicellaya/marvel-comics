@@ -25,24 +25,20 @@ export class HomePage {
         for (let i = 0; i < data.length; i++) {
           this.marvelComics.push(data[i]);
         }
-  			console.log(this.marvelComics);
   		});
   }
 
   getDetails(marvelComic) {
-  	console.log(marvelComic);
     this.navCtrl.push(ComicDetailsPage);
   }
 
   getMoreComics(infiniteScroll) {
-    console.log('Begin async operation');
     this.pageNum += 1;
     this.marvelComicService.getComics(this.pageNum)
       .then(data => {
         for (let i = 0; i < data.length; i++) {
           this.marvelComics.push(data[i]);
         }
-        console.log(this.marvelComics);
         infiniteScroll.complete();
       });
   }
@@ -59,5 +55,9 @@ export class HomePage {
             || (year.indexOf(val) > -1);
       });
     }
+  }
+
+  onCancel(ev) { 
+    ev.target.value = '';
   }
 }
