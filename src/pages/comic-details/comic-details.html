@@ -13,6 +13,11 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="row responsive-md">
+    <div class="col col-25" ngFor="let image in comic.images">
+      <img src="{{ image.path }}.{{ image.extension }}">
+  </div>
+
   <h1>Descripción: </h1>
   <p>{{ comic.description }}</p>
   
