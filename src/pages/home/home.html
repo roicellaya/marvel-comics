@@ -18,4 +18,8 @@
       <button ion-button clear (click)="getDetails(marvelComic)">Detalles</button>
     </ion-item>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="getMoreComics($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

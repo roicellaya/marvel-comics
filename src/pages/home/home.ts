@@ -11,15 +11,19 @@ import { ComicDetailsPage } from '../comic-details/comic-details';
 })
 export class HomePage {
 	public marvelComics: any;
+  public pageNum: number;
 
   constructor(public navCtrl: NavController, public marvelComicService: MarvelComicService) {
-  	this.getMarvelComics();
+  	this.pageNum = 0;
+    this.getMarvelComics();
   }
 
   getMarvelComics() {
-  	this.marvelComicService.getAll()
+  	this.marvelComicService.getComics(this.pageNum)
   		.then(data => {
-  			this.marvelComics = data;
+        for (let i = 0; i < data.length; i++) {
+          this.marvelComics.push(data[i]);
+        }
   			console.log(this.marvelComics);
   		});
   }
@@ -27,6 +31,18 @@ export class HomePage {
   getDetails(marvelComic) {
   	console.log(marvelComic);
     this.navCtrl.push(ComicDetailsPage);
+  }
+
+  getMoreComics(infiniteScroll) {
+    console.log('Begin async operation');
+    this.pageNum += 1;
+    this.marvelComicService.getComics(this.pageNum)
+      .then(data => {
+        for (let i = 0; i < data.length; i++) {
+          this.marvelComics.push(data[i]);
+        }
+        console.log(this.marvelComics);
+      });
   }
 
 }
