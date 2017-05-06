@@ -11,6 +11,7 @@ import {MarvelComicService} from '../../providers/marvel-comic-service';
 @Component({
   selector: 'page-comic-details',
   templateUrl: 'comic-details.html',
+  providers: [MarvelComicService]
 })
 export class ComicDetailsPage {
   public comic: any;
