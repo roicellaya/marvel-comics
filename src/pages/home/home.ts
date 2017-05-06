@@ -15,6 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, public marvelComicService: MarvelComicService) {
   	this.pageNum = 0;
+    this.marvelComics = [];
     this.getMarvelComics();
   }
 
