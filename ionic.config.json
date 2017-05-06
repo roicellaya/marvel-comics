@@ -2,5 +2,11 @@
   "name": "marvelComics",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/v1",
+      "proxyUrl": "https://gateway.marvel.com/v1"
+    }
+  ]
 }
