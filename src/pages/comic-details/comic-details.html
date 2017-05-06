@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>comicDetails</ion-title>
+    <ion-title>{{ comic.title }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+  <h1>Descripción: </h1>
+  <p>{{ comic.description }}</p>
+  
+  <h1>Creadores: </h1>
+  <p *ngFor="let creator of comic.creators.items">
+    {{ creator.name }}
+  </p>
+
+  <h1>Personajes: </h1>
+  <p *ngFor="let character of comic.characters.items">
+    {{ character.name }}
+  </p>
+
+  <h1>Historias: </h1>
+  <p *ngFor="let story of comic.stories.items">
+    {{ story.name }}
+  </p>
+
+  <h1>Formato del comic: </h1>
+  <p>{{ comic.format }}</p>
 
 </ion-content>

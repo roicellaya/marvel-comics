@@ -16,7 +16,6 @@ export class MarvelComicService {
 	limit: number;
 
   constructor(public http: Http) {
-    console.log('Hello MarvelComicService Provider');
     this.limit = 30;
   }
 
@@ -42,21 +41,5 @@ export class MarvelComicService {
 	        resolve(this.data);
 	      });
 	  });
-	}
-
-	getComic(id) {
-		if (this.comicData) {
-	    // already loaded data
-	    return Promise.resolve(this.comicData);
-	  }
-
-    return new Promise(resolve => {
-      var query_string = id + '&apikey=eec2b791e6e4abce698cc51c828fcd0a';
-      this.http.get('https://gateway.marvel.com/v1/public/comics/' + query_string)
-        .map(res => res.json())
-        .subscribe(data => {
-          this.comicData = data.data.results[0];
-        });
-    });
 	}
 }

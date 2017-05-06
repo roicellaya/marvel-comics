@@ -55592,7 +55592,6 @@ webpackEmptyContext.id = 98;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__ = __webpack_require__(199);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComicDetailsPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -55605,7 +55604,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
 /**
  * Generated class for the ComicDetails page.
  *
@@ -55613,29 +55611,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var ComicDetailsPage = (function () {
-    function ComicDetailsPage(navCtrl, navParams, marvelComicService) {
-        var _this = this;
+    function ComicDetailsPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.marvelComicService = marvelComicService;
-        var marvelComic = navParams.get('marvelComic');
-        this.marvelComicService.getComic(marvelComic.id)
-            .then(function (data) {
-            _this.comic = data;
-            console.log(_this.comic);
-        });
+        this.comic = navParams.get('marvelComic');
     }
     return ComicDetailsPage;
 }());
 ComicDetailsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-comic-details',template:/*ion-inline-start:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/comic-details/comic-details.html"*/'<!--\n  Generated template for the ComicDetails page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>comicDetails</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/comic-details/comic-details.html"*/,
-        providers: [__WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]]
+        selector: 'page-comic-details',template:/*ion-inline-start:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/comic-details/comic-details.html"*/'<!--\n  Generated template for the ComicDetails page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>{{ comic.title }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content padding>\n  <h1>Descripción: </h1>\n  <p>{{ comic.description }}</p>\n  \n  <h1>Creadores: </h1>\n  <p *ngFor="let creator of comic.creators.items">\n    {{ creator.name }}\n  </p>\n\n  <h1>Personajes: </h1>\n  <p *ngFor="let character of comic.characters.items">\n    {{ character.name }}\n  </p>\n\n  <h1>Historias: </h1>\n  <p *ngFor="let story of comic.stories.items">\n    {{ story.name }}\n  </p>\n\n  <h1>Formato del comic: </h1>\n  <p>{{ comic.format }}</p>\n\n</ion-content>\n'/*ion-inline-end:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/comic-details/comic-details.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
 ], ComicDetailsPage);
 
-var _a, _b, _c;
 //# sourceMappingURL=comic-details.js.map
 
 /***/ }),
@@ -55717,10 +55706,9 @@ HomePage = __decorate([
         selector: 'page-home',template:/*ion-inline-start:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Marvel Comics\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-searchbar (ionInput)="filterComics($event)" (ionCancel)="onCancel($event)"></ion-searchbar>\n  <ion-list>\n    <ion-item *ngFor="let marvelComic of marvelComics">\n      <ion-thumbnail item-left>\n        <img src="{{ marvelComic.thumbnail.path }}.{{ marvelComic.thumbnail.extension }}">\n      </ion-thumbnail>\n      <h2>Título: {{ marvelComic.title }}</h2>\n      <p>Fecha: {{ marvelComic.dates[0].date | date }}</p>\n      <p>Descripción: {{ marvelComic.description }}</p>\n      <button ion-button clear (click)="getDetails(marvelComic)">Detalles</button>\n    </ion-item>\n  </ion-list>\n\n  <ion-infinite-scroll (ionInfinite)="getMoreComics($event)">\n    <ion-infinite-scroll-content></ion-infinite-scroll-content>\n  </ion-infinite-scroll>\n</ion-content>\n'/*ion-inline-end:"/home/rlaya/Documentos/proyectos-particulares/test_kunder/marvelComics/src/pages/home/home.html"*/,
         providers: [__WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_marvel_comic_service__["a" /* MarvelComicService */]])
 ], HomePage);
 
-var _a, _b;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -76758,7 +76746,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var MarvelComicService = (function () {
     function MarvelComicService(http) {
         this.http = http;
-        console.log('Hello MarvelComicService Provider');
         this.limit = 30;
     }
     MarvelComicService.prototype.getComics = function (pageNum) {
@@ -76784,29 +76771,13 @@ var MarvelComicService = (function () {
             });
         });
     };
-    MarvelComicService.prototype.getComic = function (id) {
-        var _this = this;
-        if (this.comicData) {
-            // already loaded data
-            return Promise.resolve(this.comicData);
-        }
-        return new Promise(function (resolve) {
-            var query_string = id + '&apikey=eec2b791e6e4abce698cc51c828fcd0a';
-            _this.http.get('https://gateway.marvel.com/v1/public/comics/' + query_string)
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                _this.comicData = data.data.results[0];
-            });
-        });
-    };
     return MarvelComicService;
 }());
 MarvelComicService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], MarvelComicService);
 
-var _a;
 //# sourceMappingURL=marvel-comic-service.js.map
 
 /***/ }),
