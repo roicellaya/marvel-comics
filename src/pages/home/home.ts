@@ -46,4 +46,18 @@ export class HomePage {
         infiniteScroll.complete();
       });
   }
+
+  filterComics(ev: any) {
+    let val = ev.target.value;
+
+    // Sólo se filtra si el string no es vacío
+    if (val && val.trim() != '') {
+      this.marvelComics = this.marvelComics.filter((marvelComic) => {
+        var title = marvelComic.title;
+        var year = marvelComic.dates[0].date;
+        return (title.toLowerCase().indexOf(val.toLowerCase()) > -1)
+            || (year.indexOf(val) > -1);
+      });
+    }
+  }
 }
