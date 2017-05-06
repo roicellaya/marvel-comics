@@ -10,10 +10,11 @@
   <ion-list>
     <ion-item *ngFor="let marvelComic of marvelComics">
       <ion-thumbnail item-left>
-        <img src="{{marvelComic.avatar_url}}">
+        <img src="{{ marvelComic.thumbnail.path }}.{{ marvelComic.thumbnail.extension }}">
       </ion-thumbnail>
-      <h2>{{marvelComic.login}}</h2>
-      <p>{{marvelComic.type}}</p>
+      <h2>Título: {{ marvelComic.title }}</h2>
+      <p>Fecha: {{ marvelComic.dates[0].date | date }}</p>
+      <p>Descripción: {{ marvelComic.description }}</p>
       <button ion-button clear item-right (click)="getDetails(marvelComic)">Detalles</button>
     </ion-item>
   </ion-list>
