@@ -76729,7 +76729,7 @@ var MarvelComicService = (function () {
             // We're using Angular HTTP provider to request the data,
             // then on the response, it'll map the JSON data to a parsed JS object.
             // Next, we process the data and resolve the promise with the new data.
-            _this.http.get('https://gateway.marvel.com/v1/public/comics?apikey=eec2b791e6e4abce698cc51c828fcd0a&limit=20')
+            _this.http.get('https://gateway.marvel.com/v1/public/comics?apikey=eec2b791e6e4abce698cc51c828fcd0a&limit=20&hasDigitalIssue=true')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (data) {
                 // we've got back the raw data, now generate the core schedule data
@@ -76745,9 +76745,10 @@ var MarvelComicService = (function () {
 }());
 MarvelComicService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], MarvelComicService);
 
+var _a;
 //# sourceMappingURL=marvel-comic-service.js.map
 
 /***/ }),
